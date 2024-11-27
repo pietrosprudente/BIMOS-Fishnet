@@ -41,6 +41,7 @@ Want to try this asset in action? You can find a demo <a href="https://kadenzomb
 - Ragdoll
 - Pedestal button
 # Limitations
+- Custom avatars aren't implemented
 - Hands can sometimes get stuck inside of objects as the grab system teleports the hands to align them with the grabs
 - Body colliders are centred around the head (too far forward)
 - Bound to 144 Hz physics rate (jump height varies when changed)
