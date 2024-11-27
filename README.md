@@ -49,4 +49,4 @@ Want to try this asset in action? You can find a demo <a href="https://kadenzomb
 - Bound to 144 Hz physics rate (jump height varies when changed)
 - Feet jitter on moving platforms
 # Attribution
-Under the MIT license, you are allowed to do whatever you want with BIMOS, even for commercial purposes. Attribution is not required, but if this project has helped you and you want to show gratitude then it would be nice to have "KadenZombie8" in the credits of your name!
+Under the MIT license, you are allowed to do whatever you want with BIMOS, even for commercial purposes. Attribution is not required, but if this project has helped you and you want to show gratitude then it would be nice to have "KadenZombie8" in the credits of your game(s)!
