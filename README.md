@@ -31,10 +31,16 @@ Want to try this asset in action? You can find a demo <a href="https://kadenzomb
 - UI interaction
   - Buttons
   - Sliders
+## Tools
+- Hand pose editor
+- Spawn point system
+- Sockets
+- Attachers
 ## Sample assets
 - Pistol
 - Grapple gun
 - Thruster
+- Key
 - Axe
 - Hammer
 - Ladder
@@ -42,6 +48,7 @@ Want to try this asset in action? You can find a demo <a href="https://kadenzomb
 - Target
 - Ragdoll
 - Pedestal button
+- Reusable scripts to help with level design
 # Limitations
 - Custom avatars aren't implemented
 - Hands can sometimes get stuck inside of objects as the grab system teleports the hands to align them with the grabs
