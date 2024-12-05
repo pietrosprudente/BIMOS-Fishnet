@@ -1,9 +1,23 @@
 ![LogoGithub](https://github.com/user-attachments/assets/b80a84ae-9d5b-4f6c-b680-1c1b933ac586)
 
-# This asset is mostly discontinued in favour of BIPED. Learn more here: https://discord.gg/Q3J2SJH4Xn
 BIMOS was my A-level computer science project. I created it to use in VR games that required realistic physical interaction like <a href="https://store.steampowered.com/app/823500/BONEWORKS/">BONEWORKS</a>.
 </br>
-Want to try this asset in action? You can find a demo <a href="https://kadenzombie8.itch.io/bimos-demo">here</a>!
+
+[![YouTube](https://github.com/user-attachments/assets/823e07fd-70fe-4225-8627-815196d5be72)](https://www.youtube.com/watch?v=FmDS8mDsh20)
+
+# Links
+- <a href="https://github.com/KadenZombie8/BIMOS/wiki">Wiki</a>
+- <a href="https://discord.gg/Q3J2SJH4Xn">Discord server</a>
+- <a href="https://kadenzombie8.itch.io/bimos-demo">Demo (itch.io)</a>
+- <a href="https://sidequestvr.com/app/39281">Demo (SideQuest)</a>
+
+# Gallery
+![Thumbnail1](https://github.com/user-attachments/assets/d432fadc-5133-4d3a-8a81-9d7c133086b6)
+![Thumbnail2](https://github.com/user-attachments/assets/55ca418e-83fd-4a70-a421-3d49223ab8d3)
+![Thumbnail3](https://github.com/user-attachments/assets/25e09cc4-d857-49e2-8b97-af92dcdb7d11)
+![Thumbnail4](https://github.com/user-attachments/assets/290e54f1-6798-4727-84ec-1f4f9d223d44)
+![Thumbnail5](https://github.com/user-attachments/assets/b2e440bf-b0d2-4a54-b859-c7586c5c34f1)
+![Thumbnail6](https://github.com/user-attachments/assets/0278da14-09ad-434d-8448-c6231ade93e0)
 
 # Features
 ## Multi-platform support
@@ -41,10 +55,12 @@ Want to try this asset in action? You can find a demo <a href="https://kadenzomb
 - Grapple gun
 - Thruster
 - Key
+- Key door
 - Axe
 - Hammer
 - Ladder
-- Elevator
+- Moving platform
+- Pooey
 - Target
 - Ragdoll
 - Pedestal button
