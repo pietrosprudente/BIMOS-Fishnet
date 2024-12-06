@@ -8540,7 +8540,6 @@ GameObject:
   - component: {fileID: 5031249120046340533}
   - component: {fileID: 4166488413971264423}
   - component: {fileID: 7113746170793521632}
-  - component: {fileID: 6591551707373349606}
   m_Layer: 0
   m_Name: RightController
   m_TagString: Untagged
@@ -8626,20 +8625,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hand: {fileID: 1714243675603914674}
---- !u!114 &6591551707373349606
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5081465939377218559}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74bfe9c8d313cf9458117129f19cd7af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hand: 2
-  alwaysUseGrip: 1
 --- !u!1 &5102174519105712723
 GameObject:
   m_ObjectHideFlags: 0
@@ -8759,7 +8744,6 @@ GameObject:
   - component: {fileID: 3756491277221457944}
   - component: {fileID: 2670558484249623212}
   - component: {fileID: 1804380787358158521}
-  - component: {fileID: 8511826736745853340}
   m_Layer: 0
   m_Name: LeftController
   m_TagString: Untagged
@@ -8845,20 +8829,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hand: {fileID: 1354081709754906145}
---- !u!114 &8511826736745853340
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5238918533599247444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74bfe9c8d313cf9458117129f19cd7af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hand: 1
-  alwaysUseGrip: 1
 --- !u!1 &5309522205204750475
 GameObject:
   m_ObjectHideFlags: 0
@@ -15612,7 +15582,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b753f982dcc4f74797ce6773ce06a68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _controller: {fileID: 8511826736745853340}
   _cameraMode: 0
   _menuButtonAction: {fileID: 4948202023381923699, guid: 0cd47f68cb724f8478ed745999f9d67a, type: 3}
   _leftGripAction:
