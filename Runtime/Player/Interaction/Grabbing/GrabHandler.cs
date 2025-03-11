@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace BIMOS
@@ -16,7 +18,10 @@ namespace BIMOS
         [SerializeField]
         private AudioClip[] _grabSounds, _releaseSounds;
 
-        private Grab _chosenGrab;
+        [SerializeField]
+        private bool ForceGrab = true;
+
+        public Grab _chosenGrab;
         private AudioSource _audioSource;
 
         private void Awake()
@@ -45,7 +50,12 @@ namespace BIMOS
 
         private Grab GetChosenGrab()
         {
-            Collider[] grabColliders = Physics.OverlapBox(_grabBounds.position, _grabBounds.localScale / 2, _grabBounds.rotation, Physics.AllLayers, QueryTriggerInteraction.Collide); //Get all grabs in the grab bounds
+            List<Collider> grabColliders = new();
+            if (Physics.SphereCast(_grabBounds.position, 0.6f, _grabBounds.eulerAngles, out RaycastHit hit, 3f, Physics.AllLayers) && ForceGrab)
+            {
+                grabColliders.Add(hit.collider);
+            }
+            grabColliders = Physics.OverlapBox(_grabBounds.position, _grabBounds.localScale / 2, _grabBounds.rotation, Physics.AllLayers, QueryTriggerInteraction.Collide).ToList(); //Get all grabs in the grab bounds
             float highestRank = 0;
             Grab highestRankGrab = null;
 
