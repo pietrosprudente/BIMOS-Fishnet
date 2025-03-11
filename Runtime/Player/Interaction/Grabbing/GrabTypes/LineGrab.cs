@@ -1,61 +1,65 @@
 using UnityEngine;
+using UnityEngine.XR;
 
 namespace BIMOS
 {
-    [AddComponentMenu("BIMOS/Grabs/Grab (Line)")]
-    public class LineGrab : SnapGrab
+    [AddComponentMenu("BIMOS/Grabs/Grab (Auto)")]
+    public class AutoGrab : Grab
     {
-        public Transform Start, End;
+        private InputDevice _leftDevice;
+        private InputDevice _rightDevice;
 
-        [SerializeField]
-        private bool _allowHandClipping;
-
-        private int _mask;
-
-        private void Awake()
+        private void InitializeHapticDevices()
         {
-            _mask = ~LayerMask.GetMask("BIMOSRig");
+            _leftDevice = InputDevices.GetDeviceAtXRNode(XRNode.LeftHand);
+            _rightDevice = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
         }
 
-        public override float CalculateRank(Transform handTransform)
+        private void Start()
         {
-            if (!_allowHandClipping)
-                if (Physics.OverlapSphere(GetNearestPoint(handTransform.position), 0.01f, _mask, QueryTriggerInteraction.Ignore).Length > 0)
-                    return 0f;
-
-            return 3f / Vector3.Distance(handTransform.position, GetNearestPoint(handTransform.position));
+            InitializeHapticDevices();
         }
 
         public override void AlignHand(Hand hand)
         {
-            Vector3 point = GetNearestPoint(hand.PalmTransform.position);
-            base.AlignHand(hand);
-            hand.PhysicsHandTransform.position += point - transform.position;
+            Vector3 handTargetPosition = GetComponent<Collider>().ClosestPoint(hand.PalmTransform.position);
+            Vector3 handToTargetDirection = (handTargetPosition - hand.PalmTransform.position).normalized;
+
+            Ray ray = new Ray(hand.PalmTransform.position, handToTargetDirection);
+            RaycastHit hit;
+
+            if (GetComponent<Collider>().Raycast(ray, out hit, 10f))
+            {
+                Vector3 projected = Vector3.ProjectOnPlane(-hand.PalmTransform.up, hit.normal).normalized;
+                Debug.DrawRay(hit.point, projected, Color.blue, 5f);
+                hand.PhysicsHandTransform.position = handTargetPosition;
+                Vector3 crossed = Vector3.Cross(hit.normal, projected).normalized;
+                if (hand.IsLeftHand)
+                    crossed *= -1f;
+                hand.PhysicsHandTransform.rotation = Quaternion.LookRotation(-crossed, -projected);
+                hand.PhysicsHandTransform.position += hit.normal * 0.02f;
+            }
+
+            hand.PhysicsHandTransform.position = hand.PhysicsHandTransform.TransformPoint(hand.PalmTransform.InverseTransformPoint(hand.PhysicsHandTransform.position));
+            hand.PhysicsHandTransform.rotation = hand.PhysicsHandTransform.rotation * Quaternion.Inverse(hand.PalmTransform.rotation) * hand.PhysicsHandTransform.rotation;
         }
 
-        public override void CreateCollider()
+        public override void OnGrab(Hand hand)
         {
-            GameObject colliderObject = new GameObject("GrabCollider");
-            colliderObject.transform.parent = transform;
-            CapsuleCollider collider = colliderObject.AddComponent<CapsuleCollider>();
-            collider.isTrigger = true;
-            colliderObject.transform.position = Vector3.Lerp(Start.position, End.position, 0.5f);
-            colliderObject.transform.up = (Start.position - End.position).normalized;
-            collider.radius = 0.01f;
-            collider.height = (Start.position - End.position).magnitude;
-            Collider = collider;
+            base.OnGrab(hand);
+
+            ProvideHapticFeedback(hand);
         }
 
-        private Vector3 GetNearestPoint(Vector3 palmPosition)
+        private void ProvideHapticFeedback(Hand hand)
         {
-            Vector3 lineVector = End.position - Start.position;
-            float lineLength = lineVector.magnitude;
-            Vector3 lineDirection = lineVector.normalized;
-
-            var v = palmPosition - Start.position;
-            var d = Vector3.Dot(v, lineDirection);
-            d = Mathf.Clamp(d, 0f, lineLength);
-            return Start.position + lineDirection * d;
+            InputDevice device = hand.IsLeftHand ? _leftDevice : _rightDevice;
+            if (device.isValid)
+            {
+                device.SendHapticImpulse(0, 10f, 0.7f);
+            }
         }
+
+        public override void IgnoreCollision(Hand hand, bool ignore) { }
     }
 }
