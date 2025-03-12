@@ -51,7 +51,7 @@ namespace BIMOS
         private Grab GetChosenGrab()
         {
             List<Collider> grabColliders = new();
-            if (Physics.SphereCast(_grabBounds.position, 0.6f, _grabBounds.eulerAngles, out RaycastHit hit, 3f, Physics.AllLayers) && ForceGrab)
+            if (Physics.SphereCast(_grabBounds.position, 0.6f, _grabBounds.eulerAngles, out RaycastHit hit, 3f, Physics.AllLayers, QueryTriggerInteraction.Collide) && ForceGrab)
             {
                 grabColliders.Add(hit.collider);
             }
