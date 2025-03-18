@@ -2,10 +2,10 @@
 
 BIMOS Fishnet is a unity package for BIMOS which add multiplayer!
 
-Networked BIMOS Rig was made with the mindset of inputs and can use either client side movement (Recommended for Beginners) or server side movement (Recommended for Experts)
+Networked BIMOS Rig was made with the mindset of inputs and with server side physics
 
 Important:
-- You will need fishnet 3+ (turn on prediction if fishnet 4 for a better experience)
+- You will need fishnet 4 (fishnet 3 works but 4 has prediciton)
 - You will need some updated scripts I commited from my BIMOS fork
 
 Most Important:
